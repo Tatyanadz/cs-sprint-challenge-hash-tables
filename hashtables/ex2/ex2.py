@@ -10,5 +10,18 @@ def reconstruct_trip(tickets, length):
     YOUR CODE HERE
     """
     # Your code here
+    flight_cache = {}
+
+    route = []
+
+    for ticket in tickets: 
+        flight_cache[ticket.source] = ticket.destination
+    
+    current_flight = flight_cache["NONE"]
+
+    while current_flight != "NONE":
+        route.append(current_flight)
+        current_flight = flight_cache[current_flight]
+    route.append(current_flight)
 
     return route
